@@ -8,6 +8,8 @@ import * as database from "../../firebase/firebase.config";
 import SectionsTabs from "../../components/SectionsTabs";
 import CategoriesTabs from "../../components/CategoriesTabs";
 import Logo from "../../assets/logo.png";
+import Logo2 from "../../assets/logo2.jpeg";
+
 const Menu = () => {
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
@@ -42,6 +44,7 @@ const Menu = () => {
           id: id,
         };
       });
+      arr.sort((a, b) => a.position - b.position);
       getCategories(arr[0].id);
       setSections(arr);
     }
@@ -68,6 +71,8 @@ const Menu = () => {
         };
       });
     }
+    categoriesArr.sort((a, b) => a.position - b.position);
+
     getItems(categoriesArr[0]?.id);
     setCategories(categoriesArr);
   };
@@ -92,7 +97,7 @@ const Menu = () => {
       });
     }
 
-    setItems(itemsArr);
+    setItems(itemsArr.sort((a, b) => a.position - b.position));
   };
 
   useEffect(() => {
@@ -105,7 +110,7 @@ const Menu = () => {
         <div className="flex flex-col items-end">
           <p className="text-left text-xl font-bold font-indie">Chez Fady</p>
           <p className="text-left text-xl font-bold font-indie">
-            Bisabiil main road
+            Bsebhel main road
           </p>
           <p className="text-left text-xl font-bold font-indie">71/071659</p>
         </div>
@@ -119,11 +124,11 @@ const Menu = () => {
         </button>
       </div>
       <div
-        className="flex flex-col items-start w-screen bg-cover bg-center p-3 h-72 relative bg-[#FF1C1C]"
-        // style={{
-        //   backgroundImage: imageUrl ? `url(${imageUrl})` : `url(${RestImage2})`, //imageUrl != "" ? `url(${imageUrl})` : "#43A6C6",
-        //   backgroundRepeat: "no-repeat",
-        // }}
+        className="flex flex-col items-start w-screen bg-contain bg-center p-3 h-96 relative "
+        style={{
+          backgroundImage: `url(${Logo2})`, //imageUrl != "" ? `url(${imageUrl})` : "#43A6C6",
+          backgroundRepeat: "no-repeat",
+        }}
       >
         <div className="absolute bottom-4">
           <SectionsTabs
